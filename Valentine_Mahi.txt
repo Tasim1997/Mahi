@@ -1,0 +1,756 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>For Mahi 💖</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg1:#0b1020;
+      --bg2:#131a33;
+      --card: rgba(255,255,255,0.10);
+      --line: rgba(255,255,255,0.16);
+      --text:#f8fafc;
+      --muted: rgba(248,250,252,0.72);
+      --hot:#ff3b7a;
+      --hot2:#ff78a5;
+      --gold:#ffd166;
+      --mint:#38f9d7;
+      --blue:#60a5fa;
+      --shadow: rgba(0,0,0,0.35);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      color:var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(1200px 700px at 20% 10%, rgba(255,59,122,0.16), transparent 65%),
+        radial-gradient(900px 650px at 80% 15%, rgba(56,249,215,0.12), transparent 60%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      overflow-x:hidden;
+    }
+
+    /* Pixel stars */
+    .stars, .stars2{
+      position:fixed; inset:0; pointer-events:none;
+      background-image:
+        radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.7) 50%, transparent 55%),
+        radial-gradient(2px 2px at 120px 90px, rgba(255,255,255,0.7) 50%, transparent 55%),
+        radial-gradient(2px 2px at 260px 140px, rgba(255,255,255,0.6) 50%, transparent 55%),
+        radial-gradient(2px 2px at 380px 60px, rgba(255,255,255,0.55) 50%, transparent 55%),
+        radial-gradient(2px 2px at 520px 110px, rgba(255,255,255,0.65) 50%, transparent 55%);
+      background-size: 620px 180px;
+      opacity:0.55;
+      animation: drift 22s linear infinite;
+      z-index:0;
+    }
+    .stars2{
+      opacity:0.35;
+      animation-duration: 34s;
+      filter: blur(0.2px);
+    }
+    @keyframes drift{
+      from{ transform: translate3d(0,0,0); }
+      to{ transform: translate3d(-620px, 0, 0); }
+    }
+
+    .wrap{
+      width:min(1050px, 94vw);
+      margin: 28px auto 60px;
+      position:relative;
+      z-index:1;
+    }
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-bottom:16px;
+    }
+
+    .logo{
+      display:flex; align-items:center; gap:12px;
+      padding: 10px 14px;
+      border:1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.06);
+      box-shadow: 0 16px 40px var(--shadow);
+    }
+    .logo .title{
+      font-family: "Press Start 2P", system-ui;
+      font-size: 12px;
+      letter-spacing: 0.4px;
+      line-height: 1.2;
+    }
+    .logo .sub{
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .pillRow{ display:flex; gap:10px; flex-wrap:wrap; }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,0.06);
+      box-shadow: 0 14px 35px var(--shadow);
+      font-weight: 700;
+      color: rgba(248,250,252,0.95);
+      cursor: pointer;
+      user-select:none;
+      text-decoration:none;
+    }
+    .pill small{ color: var(--muted); font-weight: 600; }
+    .pill:hover{ background: rgba(255,255,255,0.10); }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 16px;
+    }
+    @media(max-width: 860px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.10);
+      border-radius: 22px;
+      box-shadow: 0 18px 55px var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .cardHeader{
+      padding: 18px 18px 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      background: linear-gradient(180deg, rgba(255,255,255,0.10), transparent);
+    }
+
+    .h1{
+      font-size: clamp(26px, 3.3vw, 40px);
+      margin: 4px 0 6px;
+      font-weight: 900;
+      letter-spacing: -0.7px;
+    }
+    .h1 span{
+      color: var(--hot2);
+      text-shadow: 0 0 16px rgba(255, 59, 122, 0.25);
+    }
+    .lead{
+      margin:0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .content{
+      padding: 16px 18px 18px;
+    }
+
+    .message{
+      border: 1px dashed rgba(255,255,255,0.22);
+      background: rgba(0,0,0,0.16);
+      padding: 14px;
+      border-radius: 16px;
+      line-height: 1.75;
+      color: rgba(248,250,252,0.95);
+      font-size: 15px;
+    }
+    .message b{ color: var(--gold); }
+
+    .row{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top: 14px;
+    }
+    .btn{
+      border:none;
+      padding: 12px 14px;
+      border-radius: 14px;
+      font-weight: 800;
+      cursor:pointer;
+      color: #081018;
+      background: linear-gradient(135deg, var(--gold), #ffe8a3);
+      box-shadow: 0 14px 30px rgba(255,209,102,0.18);
+      transition: transform .06s ease, filter .2s ease;
+      text-decoration:none;
+      display:inline-flex; align-items:center; gap:10px;
+    }
+    .btn:hover{ filter: brightness(1.02); }
+    .btn:active{ transform: translateY(1px) scale(0.99); }
+
+    .btn2{
+      background: linear-gradient(135deg, var(--hot), var(--hot2));
+      color: white;
+      box-shadow: 0 14px 30px rgba(255,59,122,0.20);
+    }
+
+    .btnGhost{
+      background: rgba(255,255,255,0.06);
+      color: rgba(248,250,252,0.92);
+      border:1px solid rgba(255,255,255,0.16);
+      box-shadow: none;
+    }
+
+    /* Photo strip (3 photos) */
+    .photoStrip{
+      padding: 14px 18px 0;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    @media(max-width: 720px){
+      .photoStrip{ grid-template-columns: 1fr; }
+    }
+    .photo{
+      border:1px solid rgba(255,255,255,0.14);
+      background: rgba(0,0,0,0.16);
+      border-radius: 18px;
+      overflow:hidden;
+      position:relative;
+      min-height: 160px;
+    }
+    .photo img{
+      width:100%;
+      height: 100%;
+      object-fit: cover;
+      display:block;
+      transform: scale(1.02);
+      filter: contrast(1.02) saturate(1.02);
+    }
+    .photo::after{
+      content:"";
+      position:absolute; inset:0;
+      background: radial-gradient(600px 200px at 50% 0%, rgba(255,59,122,0.10), transparent 60%);
+      pointer-events:none;
+    }
+
+    /* Gallery */
+    .gallery{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding: 14px 18px 18px;
+    }
+    @media(max-width: 720px){
+      .gallery{ grid-template-columns: 1fr; }
+    }
+    .art{
+      border:1px solid rgba(255,255,255,0.14);
+      background: rgba(0,0,0,0.16);
+      border-radius: 18px;
+      padding: 12px;
+      position:relative;
+      overflow:hidden;
+      min-height: 220px;
+    }
+    .art h3{
+      margin: 0 0 8px;
+      font-size: 13px;
+      color: rgba(248,250,252,0.92);
+      font-family: "Press Start 2P", system-ui;
+      font-weight: 400;
+      line-height: 1.4;
+    }
+    .art p{
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .imgFrame{
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,0.14);
+      overflow:hidden;
+      height: 150px;
+      background: rgba(255,255,255,0.05);
+    }
+    .imgFrame img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+    }
+
+    /* Game card */
+    .gameWrap{
+      padding: 14px;
+      display:grid;
+      gap:12px;
+    }
+    .hud{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      flex-wrap:wrap;
+      border:1px solid rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.15);
+      padding: 12px;
+      border-radius: 16px;
+    }
+    .hudLeft{
+      display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    }
+    .pixel{
+      font-family: "Press Start 2P", system-ui;
+      font-size: 11px;
+      line-height:1.35;
+    }
+    .meter{
+      width: 220px;
+      height: 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.06);
+      overflow:hidden;
+    }
+    .fill{
+      height:100%;
+      width:0%;
+      background: linear-gradient(90deg, var(--hot), var(--mint));
+      transition: width .25s ease;
+    }
+    .hudRight{
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .arena{
+      position:relative;
+      height: 320px;
+      border:1px solid rgba(255,255,255,0.12);
+      background:
+        radial-gradient(900px 280px at 50% 0%, rgba(255,59,122,0.12), transparent 60%),
+        rgba(0,0,0,0.16);
+      border-radius: 18px;
+      overflow:hidden;
+    }
+
+    .heartPick{
+      position:absolute;
+      width: 44px;
+      height: 44px;
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+      user-select:none;
+      filter: drop-shadow(0 10px 10px rgba(0,0,0,0.28));
+      transform: translate(-50%,-50%);
+      animation: floaty 2.2s ease-in-out infinite;
+    }
+    @keyframes floaty{
+      0%,100%{ transform: translate(-50%,-50%) translateY(0); }
+      50%{ transform: translate(-50%,-50%) translateY(-10px); }
+    }
+
+    .toast{
+      position:absolute;
+      left: 14px;
+      bottom: 14px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,0.14);
+      background: rgba(0,0,0,0.35);
+      color: rgba(248,250,252,0.92);
+      font-size: 13px;
+      max-width: calc(100% - 28px);
+      opacity:0;
+      transform: translateY(10px);
+      transition: all .25s ease;
+    }
+    .toast.show{
+      opacity:1;
+      transform: translateY(0);
+    }
+
+    .proposal{
+      padding: 14px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,0.20));
+    }
+    .locked{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      border:1px solid rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.20);
+      border-radius: 16px;
+      padding: 12px;
+    }
+    .locked .big{
+      font-weight: 900;
+      letter-spacing: -0.2px;
+      font-size: 16px;
+    }
+    .locked .small{
+      color: var(--muted);
+      font-size: 13px;
+      line-height:1.5;
+    }
+
+    .finalBox{
+      display:none;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(0,0,0,0.22);
+      border-radius: 18px;
+      padding: 14px;
+    }
+    .finalBox.show{ display:block; }
+
+    .finalBox h2{
+      margin: 0 0 8px;
+      font-size: 20px;
+      letter-spacing:-0.4px;
+    }
+    .finalBox p{
+      margin:0;
+      color: rgba(248,250,252,0.92);
+      line-height:1.7;
+    }
+
+    /* Confetti */
+    .confetti{
+      position:fixed; inset:0; pointer-events:none; z-index:9999;
+    }
+    .confetti i{
+      position:absolute;
+      top:-12px;
+      width:10px;
+      height:16px;
+      border-radius:3px;
+      opacity:0.95;
+      animation: fall linear forwards;
+    }
+    @keyframes fall{
+      to{ transform: translateY(110vh) rotate(720deg); }
+    }
+
+    .foot{
+      text-align:center;
+      color: var(--muted);
+      font-size: 13px;
+      margin: 2px 0 12px;
+      padding: 0 18px 14px;
+    }
+    code{ color: rgba(248,250,252,0.9); }
+  </style>
+</head>
+
+<body>
+  <div class="stars"></div>
+  <div class="stars2"></div>
+  <div class="confetti" id="confetti"></div>
+
+  <div class="wrap">
+    <div class="topbar">
+      <div class="logo">
+        <div aria-hidden="true">
+          <svg width="34" height="34" viewBox="0 0 32 32" fill="none">
+            <rect x="0" y="0" width="32" height="32" rx="10" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.14)"/>
+            <path d="M16 24s-8-4.7-8-10.2C8 10.9 9.8 9 12.2 9c1.6 0 2.8.8 3.8 2 1-1.2 2.2-2 3.8-2C22.2 9 24 10.9 24 13.8 24 19.3 16 24 16 24z"
+                  fill="#ff3b7a"/>
+          </svg>
+        </div>
+        <div>
+          <div class="title">LOVE QUEST</div>
+          <div class="sub">Valentine Edition</div>
+        </div>
+      </div>
+
+      <div class="pillRow">
+        <!-- Paste your exact favorite link here (YouTube / Spotify / Apple Music) -->
+        <a class="pill" id="musicLink"
+           href="https://www.youtube.com/results?search_query=Until+I+Found+You+Stephen+Sanchez"
+           target="_blank" rel="noreferrer">
+          🎵 <span>Play our song</span> <small>(Until I Found You)</small>
+        </a>
+        <div class="pill" id="burstBtn">✨ Spawn confetti</div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- LEFT: Romantic card -->
+      <div class="card">
+        <div class="cardHeader">
+          <div class="h1">Happy Valentine’s Day, <span>Mahi</span> 💖</div>
+          <p class="lead">
+            Welcome to a tiny little game where the prize is… <b>you</b>. (Yes, I’m biased. And correct.)
+          </p>
+        </div>
+
+        <!-- 3 photos you provided -->
+        <div class="photoStrip" aria-label="Our photos">
+          <div class="photo"><img src="AJM07854.jpg" alt="Photo of us 1"></div>
+          <div class="photo"><img src="ESH01586.jpg" alt="Photo of us 2"></div>
+          <div class="photo"><img src="MSN00905.jpg" alt="Photo of us 3"></div>
+        </div>
+
+        <div class="content">
+          <div class="message">
+            Mahi, <b>you are my calm</b> when life is loud, and my joy when days feel long.
+            Every version of my future looks better with you in it.
+            <br><br>
+            So today, I made you something simple but real:
+            a little “love quest” — because you’re the one person I’d choose again and again.
+          </div>
+
+          <div class="row">
+            <a class="btn btn2" href="#game">🎮 Start the Love Quest</a>
+            <button class="btn btnGhost" id="replayBtn">🔁 Reset quest</button>
+          </div>
+        </div>
+
+        <!-- Bouquet photo + ring art -->
+        <div class="gallery">
+          <div class="art">
+            <h3>THE BOUQUET</h3>
+            <p>Not an emoji. The real deal. Just like my love for you.</p>
+            <div class="imgFrame">
+              <img src="red-and-black-roses-3998277.jpg" alt="Bouquet of roses">
+            </div>
+          </div>
+
+          <div class="art">
+            <h3>THE RING</h3>
+            <p>Okay, it’s symbolic… but the promise is real.</p>
+            <div class="imgFrame" style="display:grid;place-items:center;">
+              <svg width="220" height="150" viewBox="0 0 220 120" fill="none" aria-hidden="true">
+                <rect x="0" y="0" width="220" height="120" rx="16" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.14)"/>
+                <circle cx="110" cy="68" r="26" stroke="#ffd166" stroke-width="10" fill="none"/>
+                <circle cx="110" cy="30" r="12" fill="#38f9d7" stroke="rgba(255,255,255,0.25)" stroke-width="4"/>
+                <circle cx="104" cy="26" r="3" fill="rgba(255,255,255,0.6)"/>
+                <path d="M60 94c16 10 84 10 100 0" stroke="rgba(255,255,255,0.20)" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="foot">
+          Want the music button to open the exact official version? Replace the <code>href</code> of “Play our song” with your preferred link.
+        </div>
+      </div>
+
+      <!-- RIGHT: Game card -->
+      <div class="card" id="game">
+        <div class="cardHeader">
+          <div class="h1" style="font-size: clamp(22px, 2.6vw, 30px);">
+            Love Quest 🎮
+          </div>
+          <p class="lead">
+            Collect <b>10 hearts</b> to unlock the final message.
+          </p>
+        </div>
+
+        <div class="gameWrap">
+          <div class="hud">
+            <div class="hudLeft">
+              <div class="pixel">HEARTS: <span id="score">0</span>/10</div>
+              <div class="meter" aria-label="Love Meter">
+                <div class="fill" id="fill"></div>
+              </div>
+            </div>
+            <div class="hudRight">Click the floating hearts 💗</div>
+          </div>
+
+          <div class="arena" id="arena" aria-label="Game Arena">
+            <div class="toast" id="toast"></div>
+          </div>
+        </div>
+
+        <div class="proposal">
+          <div class="locked" id="lockedBox">
+            <div>
+              <div class="big">🔒 Final Message Locked</div>
+              <div class="small">Collect 10 hearts to unlock. No shortcuts. Love is old-school like that.</div>
+            </div>
+            <button class="btn btnGhost" id="hintBtn">💡 Hint</button>
+          </div>
+
+          <div class="finalBox" id="finalBox">
+            <h2>Mahi… 💍</h2>
+            <p>
+              You’re not just my Valentine — you’re my home, my peace, and my best friend.
+              I don’t want “once upon a time.” I want <b>every day</b>, with you.
+              <br><br>
+              <b>Will you be mine forever?</b>
+            </p>
+
+            <div class="row" style="margin-top:12px;">
+              <button class="btn btn2" id="yesBtn">YES ❤️</button>
+              <button class="btn btnGhost" id="shyBtn">I’m blushing 🙈</button>
+            </div>
+            <p class="lead" id="answerLine" style="margin-top:10px;"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const arena = document.getElementById("arena");
+    const scoreEl = document.getElementById("score");
+    const fillEl = document.getElementById("fill");
+    const toast = document.getElementById("toast");
+    const confetti = document.getElementById("confetti");
+
+    const lockedBox = document.getElementById("lockedBox");
+    const finalBox = document.getElementById("finalBox");
+    const yesBtn = document.getElementById("yesBtn");
+    const shyBtn = document.getElementById("shyBtn");
+    const answerLine = document.getElementById("answerLine");
+
+    const replayBtn = document.getElementById("replayBtn");
+    const hintBtn = document.getElementById("hintBtn");
+    const burstBtn = document.getElementById("burstBtn");
+
+    let score = 0;
+    let heartsOnScreen = 0;
+    let running = true;
+
+    function showToast(msg){
+      toast.textContent = msg;
+      toast.classList.add("show");
+      clearTimeout(showToast._t);
+      showToast._t = setTimeout(() => toast.classList.remove("show"), 1400);
+    }
+
+    function burstConfetti(count){
+      const colors = ["#ff3b7a","#ff78a5","#ffd166","#38f9d7","#60a5fa","#a78bfa","#f97316"];
+      for (let i=0; i<count; i++){
+        const p = document.createElement("i");
+        p.style.left = (Math.random()*100) + "vw";
+        p.style.width = (6 + Math.random()*8) + "px";
+        p.style.height = (10 + Math.random()*14) + "px";
+        p.style.background = colors[Math.floor(Math.random()*colors.length)];
+        const dur = 2.2 + Math.random()*2.4;
+        const delay = Math.random()*0.2;
+        p.style.animationDuration = dur + "s";
+        p.style.animationDelay = delay + "s";
+        p.style.transform = `rotate(${Math.random()*360}deg)`;
+        confetti.appendChild(p);
+        setTimeout(() => p.remove(), (dur+delay)*1000 + 250);
+      }
+    }
+
+    function updateHUD(){
+      scoreEl.textContent = score;
+      fillEl.style.width = Math.min(100, (score/10)*100) + "%";
+      if(score >= 10){
+        unlockFinal();
+      }
+    }
+
+    function unlockFinal(){
+      running = false;
+      lockedBox.style.display = "none";
+      finalBox.classList.add("show");
+      burstConfetti(220);
+      showToast("Quest complete! Final unlocked 💍");
+      arena.querySelectorAll(".heartPick").forEach(h => h.remove());
+      heartsOnScreen = 0;
+    }
+
+    function spawnHeart(){
+      if(!running) return;
+      if(heartsOnScreen >= 6) return;
+
+      const h = document.createElement("div");
+      h.className = "heartPick";
+
+      h.innerHTML = `
+        <svg width="40" height="40" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 26s-10-5.9-10-12.7C6 10 8.2 8 11 8c2 0 3.6 1 5 2.7C17.4 9 19 8 21 8c2.8 0 5 2 5 5.3C26 20.1 16 26 16 26z"
+            fill="#ff3b7a" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+          <circle cx="12" cy="13" r="2" fill="rgba(255,255,255,0.55)"/>
+        </svg>
+      `;
+
+      const x = 6 + Math.random()*88;
+      const y = 12 + Math.random()*70;
+      h.style.left = x + "%";
+      h.style.top = y + "%";
+
+      const ttl = 900 + Math.random()*900;
+      h.style.animationDuration = (1.7 + Math.random()*1.2) + "s";
+
+      heartsOnScreen++;
+      arena.appendChild(h);
+
+      const removeLater = setTimeout(() => {
+        if(h.parentNode){
+          h.remove();
+          heartsOnScreen = Math.max(0, heartsOnScreen-1);
+        }
+      }, ttl);
+
+      h.addEventListener("click", () => {
+        clearTimeout(removeLater);
+        h.remove();
+        heartsOnScreen = Math.max(0, heartsOnScreen-1);
+        score++;
+        updateHUD();
+
+        if(score === 1) showToast("Nice! Keep going 💗");
+        if(score === 5) showToast("Halfway there, Mahi 😌");
+        if(score === 9) showToast("One more… 👀");
+
+        burstConfetti(24);
+      });
+    }
+
+    setInterval(() => {
+      if(!running) return;
+      spawnHeart();
+    }, 520);
+
+    replayBtn.addEventListener("click", () => resetGame());
+    hintBtn.addEventListener("click", () => showToast("Click the hearts. Love is simple (and a little addictive)."));
+    burstBtn.addEventListener("click", () => burstConfetti(140));
+
+    yesBtn.addEventListener("click", () => {
+      answerLine.textContent = "She said YES ❤️ (Okay, you clicked it… but I’m counting it.)";
+      burstConfetti(320);
+    });
+
+    shyBtn.addEventListener("click", () => {
+      answerLine.textContent = "I’m blushing too 🙈 But seriously… it’s you. It’s always been you.";
+      burstConfetti(220);
+    });
+
+    function resetGame(){
+      score = 0;
+      running = true;
+      lockedBox.style.display = "flex";
+      finalBox.classList.remove("show");
+      answerLine.textContent = "";
+      arena.querySelectorAll(".heartPick").forEach(h => h.remove());
+      heartsOnScreen = 0;
+      updateHUD();
+      showToast("Quest reset. Round two 😄");
+    }
+
+    updateHUD();
+    showToast("Start clicking hearts 💗");
+  </script>
+</body>
+</html>
